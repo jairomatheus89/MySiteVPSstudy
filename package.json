@@ -1,0 +1,23 @@
+{
+  "name": "mysite",
+  "version": "1.0.0",
+  "description": "MEU PROJETO SOLO aprendendo usar/configurar VPS, um espaço de estudos! `jairomatheus89.site`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jairomatheus89/MySiteVPSstudy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jairomatheus89/MySiteVPSstudy/issues"
+  },
+  "homepage": "https://github.com/jairomatheus89/MySiteVPSstudy#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
