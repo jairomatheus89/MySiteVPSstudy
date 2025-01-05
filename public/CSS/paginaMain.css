@@ -1,0 +1,26 @@
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    color:rgb(0, 146, 7);
+    background-color: black;
+}
+
+h1{
+    font-size:48pt;
+}
+
+h2{
+    font-size:28pt;
+}
+
+#dataForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#inputmessage{
+    height: 40px;
+}

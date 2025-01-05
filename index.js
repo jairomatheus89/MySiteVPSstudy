@@ -1,19 +1,39 @@
-// Importa o módulo express
-const path = require('path');
 const express = require('express');
-// Cria uma aplicação Express
+const path = require('path');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const User = require('./models/users');
+
+const PORT = 80;
 const app = express();
 
-// Configuração para servir arquivos estáticos da pasta atual
-app.use(express.static(path.join(__dirname)));
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Define uma rota para a página inicial
+//rota padrao para servir o index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname,'./public/paginaMain.html'));
+    res.sendFile(path.join(__dirname, 'public', 'paginaMain.html'));
 });
 
-// Configura a aplicação para escutar na porta 3000
-const PORT = 80;
+// Conexão com o MongoDB
+mongoose.connect('mongodb+srv://jairomatheus89:gNRgunsnroseS89@freecluster.wby27.mongodb.net/?retryWrites=true&w=majority&appName=FreeCluster',{
+}).then(() => console.log('Conectado ao MongoDB'))
+  .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
+
+// Rota para receber o formulário
+app.post('/add-user', async (req, res) => {
+    const { name } = req.body;
+    try {
+        const user = new User({ name });
+        await user.save();
+        res.send('Usuário salvo com sucesso!');
+    } catch (err) {
+        res.status(500).send('Erro ao salvar o usuário.');
+    }
+});
+
+// Servidor rodando
 app.listen(PORT, () => {
-    console.log(`rodando em http://localhost:${PORT}`);
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
