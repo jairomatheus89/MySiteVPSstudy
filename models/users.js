@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const UserMeuPiruzao = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        maxlength: 26,
     },
-});
+    messagezinha: {
+        type: String,
+        required: true,
+        maxlength: 150,
+    },
+}, {timestamps: true});
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('myblackcock', UserMeuPiruzao);

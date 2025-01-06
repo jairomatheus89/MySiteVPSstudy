@@ -16,22 +16,26 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'paginaMain.html'));
 });
 
-// Conexão com o MongoDB
-mongoose.connect('mongodb+srv://jairomatheus89:gNRgunsnroseS89@freecluster.wby27.mongodb.net/?retryWrites=true&w=majority&appName=FreeCluster',{
-}).then(() => console.log('Conectado ao MongoDB'))
-  .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
+mongoose.connect('mongodb+srv://jairomatheus89:gNRgunsnroseS89@freecluster.wby27.mongodb.net/meupiruzao',{
+    useNewUrlParser: true,    // Parses MongoDB connection string
+    useUnifiedTopology: true, // Enables new connection management engine
+});
 
 // Rota para receber o formulário
-app.post('/add-user', async (req, res) => {
-    const { name } = req.body;
+app.post('/postinhoUser', async (req, res) => {
+    const { name, messagezinha } = req.body;
     try {
-        const user = new User({ name });
+        const user = new User({ name, messagezinha });
         await user.save();
-        res.send('Usuário salvo com sucesso!');
+        res.redirect('/successsavename');
     } catch (err) {
         res.status(500).send('Erro ao salvar o usuário.');
     }
 });
+
+app.get('/successsavename', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'successsavename.html'))
+})
 
 // Servidor rodando
 app.listen(PORT, () => {
