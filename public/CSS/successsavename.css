@@ -4,6 +4,7 @@ body{
     align-items: center;
     color:rgb(0, 146, 7);
     background-image: url('https://images.alphacoders.com/738/738019.jpg');
+    text-shadow: 2px 2px 1px white;
 }
 
 h1{
@@ -32,6 +33,5 @@ h1{
         background-size:auto 100%;
         background-repeat: no-repeat;
         background-position: center;
-        text-shadow: 2px 2px 1px white;
     }
 }

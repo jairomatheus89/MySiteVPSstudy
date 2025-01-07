@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const User = require('./models/users');
 
-const PORT = 80;
+const PORT = 3000;
 const app = express();
 
 // Middleware
